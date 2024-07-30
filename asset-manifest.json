@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/viva/static/css/main.e6c13ad2.css",
-    "main.js": "/viva/static/js/main.dd2bb6c9.js",
+    "main.js": "/viva/static/js/main.7e5f88a2.js",
     "static/js/453.b66b0ba1.chunk.js": "/viva/static/js/453.b66b0ba1.chunk.js",
     "static/media/viva.png": "/viva/static/media/viva.15d3e153372af0f2552e.png",
     "static/media/logo.png": "/viva/static/media/logo.c90947d71844ab90d7bf.png",
     "static/media/circle-v-red.png": "/viva/static/media/circle-v-red.11bc0c0f44bd33d87ffe.png",
     "index.html": "/viva/index.html",
     "main.e6c13ad2.css.map": "/viva/static/css/main.e6c13ad2.css.map",
-    "main.dd2bb6c9.js.map": "/viva/static/js/main.dd2bb6c9.js.map",
+    "main.7e5f88a2.js.map": "/viva/static/js/main.7e5f88a2.js.map",
     "453.b66b0ba1.chunk.js.map": "/viva/static/js/453.b66b0ba1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.dd2bb6c9.js"
+    "static/js/main.7e5f88a2.js"
   ]
 }
