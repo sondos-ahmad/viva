@@ -14,25 +14,67 @@ export default function OutlinedCard() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [errors, setErrors] = useState({
+    name: false,
+    phone: false,
+    email: false,
+  });
+  const [helperTexts, setHelperTexts] = useState({
+    name: '',
+    phone: '',
+    email: '',
+  });
+
+  const validateForm = () => {
+    let valid = true;
+    let errors = { name: false, phone: false, email: false };
+    let helperTexts = { name: '', phone: '', email: '' };
+
+    if (!name.trim()) {
+      valid = false;
+      errors.name = true;
+      helperTexts.name = 'Full Name is required';
+    }
+
+    if (!phone.trim() || !/^\d+$/.test(phone)) {
+      valid = false;
+      errors.phone = true;
+      helperTexts.phone = 'Phone Number is required and must be numeric';
+    }
+
+    if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+      valid = false;
+      errors.email = true;
+      helperTexts.email = 'A valid Email is required';
+    }
+
+    setErrors(errors);
+    setHelperTexts(helperTexts);
+    return valid;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    try {
-      await addDoc(collection(db, 'contacts'), {
-        name,
-        email,
-        phone,
-      });
-      alert('Data saved successfully!');
-      setName('');
-      setEmail('');
-      setPhone('');
-    } catch (error) {
-      console.error('Error adding document: ', error);
-      alert('Error saving data');
+    if (validateForm()) {
+      try {
+        await addDoc(collection(db, 'contacts'), {
+          name,
+          email,
+          phone,
+        });
+        alert('Data saved successfully!');
+        setName('');
+        setEmail('');
+        setPhone('');
+      } catch (error) {
+        console.error('Error adding document: ', error);
+        alert('Error saving data');
+      }
+  
+      console.log('Form Submitted', { name, phone, email });
     }
   };
+  
 
   return (
     <Box 
@@ -71,6 +113,8 @@ export default function OutlinedCard() {
               fullWidth
               value={name}
               onChange={(e)=>setName(e.target.value)}
+              error={errors.name}
+        helperText={helperTexts.name}
               
             /><br />
             <TextField
@@ -81,6 +125,9 @@ export default function OutlinedCard() {
               fullWidth
               value={phone}
               onChange={(e)=>setPhone(e.target.value)}
+              error={errors.phone}
+              helperText={helperTexts.phone}
+              inputProps={{ inputMode: 'numeric' }}
               
             /><br />
             <TextField
@@ -91,6 +138,8 @@ export default function OutlinedCard() {
               fullWidth
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
+              error={errors.email}
+        helperText={helperTexts.email}
             />
             <CardActions sx={{ justifyContent: 'flex-end' }}>
               <Button

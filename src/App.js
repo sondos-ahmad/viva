@@ -11,12 +11,18 @@ function App() {
   return (
     <div>
    <Navbar />
+   
       <Box
           component="img"
           sx={{
             width: '100%',
-            height:'500px',
-            display: 'block'
+            height: {
+              xs: '300px', // Height for small screens
+              sm: '400px', // Height for medium screens
+              md: '500px', // Height for large screens
+            },
+            display: 'block',
+            objectFit: 'cover',
           }}
           alt="Landing"
           src={viva}
@@ -25,7 +31,6 @@ function App() {
         <Typography
   variant="h2"
   sx={{
-   
      fontFamily: 'ROBOTO'
   }}
 >
@@ -34,6 +39,12 @@ function App() {
       <Typography
   variant="h5"
   sx={{
+    fontSize: {
+      xs: '1.25rem', // fontSize for extra-small screens
+      sm: '1.5rem', // fontSize for small screens
+      md: '1.75rem', // fontSize for medium screens
+      lg: '2rem', // fontSize for large screens
+    },
      fontFamily: 'Archivo'
   }}
 >
@@ -42,13 +53,17 @@ where the journey is <br />as exhilarating as the destination,
 and where every moment<br /> is an opportunity to make your mark on the canvas of existence.<br />
  The only limit is the extent of your imagination.
       </Typography>
+     
       </Box>
-      <InfoCard />
+      
+      <InfoCard  />
+      
       <Box
       sx={{
         display: 'flex',
         justifyContent: 'center', // Center horizontally
-        alignItems: 'center',     // Center vertically
+        alignItems: 'center',  
+          // Center vertically
       }}
     >
       <Box
